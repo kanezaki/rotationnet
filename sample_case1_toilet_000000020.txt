@@ -1,0 +1,3 @@
+images_case1/toilet_000000020_006.png 5
+images_case1/toilet_000000020_008.png 7
+images_case1/toilet_000000020_011.png 10
