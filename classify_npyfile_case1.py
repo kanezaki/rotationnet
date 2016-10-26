@@ -1,4 +1,4 @@
-import numpy, sys, os
+import numpy, sys
 from PIL import Image
 
 f = open('classes.txt')
@@ -13,7 +13,7 @@ lines = f.readlines()
 vid = [int(v.split(' ')[-1][:-1]) for v in lines]
 imfiles = [v.split(' ')[0] for v in lines]
 
-numR = scores_.shape[1]/ clsnum
+numR = scores_.shape[1]/ (clsnum+1)
 if (len(scores_) > numR) or (len(vid) > numR):
     print 'Please input the info. of a single sample.'
     exit()

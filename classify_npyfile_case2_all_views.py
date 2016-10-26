@@ -1,26 +1,14 @@
 import numpy, sys
-from PIL import Image
 
 f = open('classes.txt')
 classes = f.readlines()
 classes = [f[:-1] for f in classes]
 clsnum = len(classes)
+clsid = classes.index(sys.argv[2])
 
-scores_ = numpy.load(sys.argv[2])
-
-f = open(sys.argv[1])
-lines = f.readlines()
-vid = [int(v.split(' ')[-1][:-1]) for v in lines]
-imfiles = [v.split(' ')[0] for v in lines]
-
-numR = scores_.shape[1]/ (clsnum+1)
-if (len(scores_) > numR) or (len(vid) > numR):
-    print 'Please input the info. of a single sample.'
-    exit()
-
-scores = numpy.ones( (numR, len(scores_[0])) )
-for i in range( len(vid) ):
-    scores[ vid[ i ] ] = scores_[ i ]
+scores = numpy.load(sys.argv[1])
+numR = scores.shape[1]/ (clsnum+1)
+nsamp = len(scores) / numR
 
 for i in range(0,len(scores)):
     for j in range(0,numR):
@@ -91,22 +79,14 @@ ang[ 57 ][ 0 ] = 15; ang[ 57 ][ 1 ] = 11; ang[ 57 ][ 2 ] = 17; ang[ 57 ][ 3 ] = 
 ang[ 58 ][ 0 ] = 19; ang[ 58 ][ 1 ] = 3; ang[ 58 ][ 2 ] = 15; ang[ 58 ][ 3 ] = 9; ang[ 58 ][ 4 ] = 10; ang[ 58 ][ 5 ] = 12; ang[ 58 ][ 6 ] = 4; ang[ 58 ][ 7 ] = 16; ang[ 58 ][ 8 ] = 6; ang[ 58 ][ 9 ] = 13; ang[ 58 ][ 10 ] = 14; ang[ 58 ][ 11 ] = 1; ang[ 58 ][ 12 ] = 7; ang[ 58 ][ 13 ] = 11; ang[ 58 ][ 14 ] = 8; ang[ 58 ][ 15 ] = 0; ang[ 58 ][ 16 ] = 18; ang[ 58 ][ 17 ] = 2; ang[ 58 ][ 18 ] = 5; ang[ 58 ][ 19 ] = 17; 
 ang[ 59 ][ 0 ] = 2; ang[ 59 ][ 1 ] = 13; ang[ 59 ][ 2 ] = 19; ang[ 59 ][ 3 ] = 11; ang[ 59 ][ 4 ] = 8; ang[ 59 ][ 5 ] = 16; ang[ 59 ][ 6 ] = 14; ang[ 59 ][ 7 ] = 5; ang[ 59 ][ 8 ] = 10; ang[ 59 ][ 9 ] = 1; ang[ 59 ][ 10 ] = 6; ang[ 59 ][ 11 ] = 9; ang[ 59 ][ 12 ] = 18; ang[ 59 ][ 13 ] = 3; ang[ 59 ][ 14 ] = 4; ang[ 59 ][ 15 ] = 17; ang[ 59 ][ 16 ] = 12; ang[ 59 ][ 17 ] = 0; ang[ 59 ][ 18 ] = 7; ang[ 59 ][ 19 ] = 15; 
 
+acc = 0
+for n in range(nsamp):
+    s = numpy.ones(clsnum*ang.shape[0])
+    for i in range(ang.shape[0]):
+        for j in range(clsnum):
+            for k in range(numR):
+                s[ i * clsnum + j ] = s[ i * clsnum + j ] * scores[ n * numR + ang[ i ][ k ] ][ k * clsnum + j ]
+    if clsid == numpy.argmax( s ) % clsnum:
+        acc = acc + 1
 
-s = numpy.ones(clsnum*ang.shape[0])
-for i in range(ang.shape[0]):
-    for j in range(clsnum):
-        for k in range(numR):
-            s[ i * clsnum + j ] = s[ i * clsnum + j ] * scores[ ang[ i ][ k ] ][ k * clsnum + j ]
-cls = numpy.argmax(s) % clsnum
-max_ang = numpy.argmax(s) / clsnum
-print '***********************'
-print '** predicted:', classes[ cls ], '**'
-print '***********************'
-
-
-# show image
-images = []
-for i in imfiles:
-    images.append( numpy.array( Image.open(i) ) )
-images = numpy.concatenate( images, axis=1 )
-Image.fromarray(images).show()
+print "Classification Accuracy ("+sys.argv[2]+"): ", acc / float( nsamp )

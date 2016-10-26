@@ -106,6 +106,8 @@ def main(argv):
     im_files = []
     for i in range(len(im_files_)):
         im_f = im_files_[ i ].split( ' ' )
+        if len(im_f) == 1:
+            im_f[ 0 ] = im_f[ 0 ][:-1]
         im_files.append(im_f[ 0 ])
 
     inputs =[caffe.io.load_image(im_f) for im_f in im_files]
