@@ -12,7 +12,7 @@ Asako Kanezaki, Yasuyuki Matsushita and Yoshifumi Nishida.
 
 ## Install
 
-### 1. Install caffe-rotationnet
+### 1. Install [caffe-rotationnet](https://github.com/kanezaki/caffe-rotationnet)
   `$ git clone https://github.com/kanezaki/caffe-rotationnet.git`  
   `$ cd caffe-rotationnet`  
   
@@ -43,7 +43,7 @@ Prepare your Makefile.config and compile.
 
 ## Train your own RotationNet models
 
-### 1. Download multi-view images generated in [Su et al. 2015] (the same as above)  
+### 1. Download multi-view images generated in [Su et al. 2015]
    `$ bash get_modelnet_png.sh`  
 
 ### 2. Download initial weights for fine-tuning the models
