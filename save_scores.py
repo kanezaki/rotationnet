@@ -11,7 +11,7 @@ import argparse
 import glob
 import time
 
-caffe_root = './caffe-rotationnet/'  # Change this to your path.
+caffe_root = './caffe-rotationnet2/'  # Change this to your path.
 sys.path.insert(0, caffe_root + 'python')
 
 import caffe
@@ -90,14 +90,27 @@ def main(argv):
     image_dims = [int(s) for s in args.images_dim.split(',')]
     channel_swap = [int(s) for s in args.channel_swap.split(',')]
 
+    mean = None
+    if args.mean_file:
+        mean = np.load(args.mean_file)
+        # Resize mean (which requires H x W x K input in range [0,1]).
+        in_shape = (227, 227)
+        m_min, m_max = mean.min(), mean.max()
+        normal_mean = (mean - m_min) / (m_max - m_min)
+        mean = caffe.io.resize_image(normal_mean.transpose((1,2,0)),
+                                     in_shape).transpose((2,0,1)) * (m_max - m_min) + m_min
+
+    if args.gpu:
+        caffe.set_mode_gpu()
+        print("GPU mode")
+    else:
+        caffe.set_mode_cpu()
+        print("CPU mode")
 
     # Make classifier.
     classifier = caffe.Classifier(args.model_def, args.pretrained_model,
-            image_dims=image_dims, gpu=args.gpu, mean_file=args.mean_file,
-            input_scale=args.input_scale, channel_swap=channel_swap)
-
-    if args.gpu:
-        print 'GPU mode'
+            image_dims=image_dims, mean=mean,
+            input_scale=1.0, raw_scale=255.0, channel_swap=channel_swap)
 
     # Load image file.
     args.input_file = os.path.expanduser(args.input_file)
