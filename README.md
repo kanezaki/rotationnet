@@ -1,12 +1,14 @@
 # RotationNet
 
-RotationNet classifies a partial set of multi-view images of an object.  
+RotationNet takes multi-view images of an object as input and jointly estimates its pose and object category.  
+We got **the first prize** at Task 1 in [the SHREC2017 Large-scale 3D Shape Retrieval from ShapeNet Core55 Challenge](https://shapenet.cs.stanford.edu/shrec17/#results) and got **the first prize** at [the SHREC2017 RGB-D Object-to-CAD Retrieval Contest](http://people.sutd.edu.sg/~saikit/projects/sceneNN/shrec17/evaluation/)!  
+Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_track3) to reproduce our results on SHREC2017 track3.  
 
-![RotationNet](https://staff.aist.go.jp/kanezaki.asako/images/RotationNet.jpg "Inference Process")
+![RotationNet](https://staff.aist.go.jp/kanezaki.asako/images/RotationNet2.jpg "Inference Process")
 
 Asako Kanezaki, Yasuyuki Matsushita and Yoshifumi Nishida.
-**RotationNet: Joint Learning of Object Classification and Viewpoint Estimation using Unaligned 3D Object Dataset.** 
-*arXiv preprint arXiv:1603.06208*, 2016.
+**RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints.** 
+*arXiv preprint arXiv:1603.06208*, 2017.
 ([pdf](https://arxiv.org/abs/1603.06208))
 
 
