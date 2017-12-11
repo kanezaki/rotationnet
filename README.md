@@ -36,11 +36,14 @@ Prepare your Makefile.config and compile.
 
     $ bash demo.sh
 
+   This predicts the category of testing images. Please see below and run "demo2.sh" for testing pose estimation.  
+
+
 ## Reproduce results on ModelNet40
 
 ### 1. Download multi-view images generated in [Su et al. 2015]
     $ bash get_modelnet_png.sh  
-    [Su et al. 2015] H. Su, S. Maji, E. Kalogerakis, E. Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV2015.  
+[Su et al. 2015] H. Su, S. Maji, E. Kalogerakis, E. Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV2015.  
    
 ### 2. Save scores and do predictions
     $ bash test_modelnet40.sh  
@@ -64,5 +67,26 @@ Prepare your Makefile.config and compile.
     $ ./caffe-rotationnet2/build/tools/finetune_net.bin Training/rotationnet_modelnet40_case1_solver.prototxt caffe_nets/ilsvrc_2012_train_iter_310k 2>&1 | tee log.txt  
 
 
+## Test pose estimation
+
+### 1. (If not done,) download multi-view images generated in [Su et al. 2015]
+    $ bash get_modelnet_png.sh  
+[Su et al. 2015] H. Su, S. Maji, E. Kalogerakis, E. Learned-Miller. Multi-view Convolutional Neural Networks for 3D Shape Recognition. ICCV2015.  
+   
+### 2. Align objects in the training set
+    $ bash make_reference_poses.sh case1 # for case (1)  
+    $ bash make_reference_poses.sh case2 # for case (2)   
+
+   This predicts the viewpoints of training images and writes the image file paths in the predicted order.  
+
+
+### 3. Run the demo script  
+    $ bash demo2.sh
+
+   This predicts the category and viewpoints of testing images, and then displays 10 training objects in the predicted category seen from the predicted viewpoints.  
+
+
 ## Reproduce results on SHREC2017 track3 (Large-scale 3D Shape Retrieval from ShapeNet Core55)
    Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_track3)
+
+
