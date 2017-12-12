@@ -62,9 +62,9 @@ Prepare your Makefile.config and compile.
 
 ### 3. Run the training operation
 #### 3-1. Case (2): Train the model w/o upright orientation (RECOMMENDED)
-    $ ./caffe-rotationnet2/build/tools/finetune_net.bin Training/rotationnet_modelnet40_case2_solver.prototxt caffe_nets/ilsvrc_2012_train_iter_310k 2>&1 | tee log.txt  
+    $ ./caffe-rotationnet2/build/tools/caffe train -solver Training/rotationnet_modelnet40_case2_solver.prototxt -weights caffe_nets/ilsvrc_2012_train_iter_310k 2>&1 | tee log.txt  
 #### 3-2. Case (1): Train the model with upright orientation
-    $ ./caffe-rotationnet2/build/tools/finetune_net.bin Training/rotationnet_modelnet40_case1_solver.prototxt caffe_nets/ilsvrc_2012_train_iter_310k 2>&1 | tee log.txt  
+    $ ./caffe-rotationnet2/build/tools/caffe train -solver Training/rotationnet_modelnet40_case1_solver.prototxt -weights caffe_nets/ilsvrc_2012_train_iter_310k 2>&1 | tee log.txt  
 
 
 ## Test pose estimation

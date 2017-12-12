@@ -12,4 +12,3 @@ momentum: 0.9
 weight_decay: 0.0005
 snapshot: 1000
 snapshot_prefix: "rotationnet_modelnet40_case1"
-device_id: 0
