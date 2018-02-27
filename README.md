@@ -8,7 +8,7 @@ Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_
 
 Asako Kanezaki, Yasuyuki Matsushita and Yoshifumi Nishida.
 **RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints.** 
-*arXiv preprint arXiv:1603.06208*, 2017.
+*CVPR*, accepted, 2018.
 ([pdf](https://arxiv.org/abs/1603.06208))
 
 
