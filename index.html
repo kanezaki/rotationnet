@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>RotationNet</title>
+    
+  </head>
+  
+  <body>
+    <div class="container" style="max-width: 900px;">
+      
+      
+      
+      <h5 class="text-center"><em><a href="http://cvpr2018.thecvf.com/">IEEE CVPR 2018</a></em></h5>
+      
+      
+      <h2 class="text-center">RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints</h2>
+      
+      
+      <div class="row">
+	
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="https://kanezaki.github.io/">Asako Kanezaki</a><br>AIST</h5>
+	</div>
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="http://www-infobiz.ist.osaka-u.ac.jp/user/matsushita/">Yasuyuki Matsushita</a><br>Osaka University</h5>
+	</div>
+	<div class="col-md-4">
+	  <h5 class="text-center"><a href="http://www.dh.aist.go.jp/en/members/nishida_y.php">Yoshifumi Nishida</a><br>AIST</h5>
+	</div>
+	
+      </div>
+
+      <div class="row">
+	<div class="col-md-12">
+	  <p class="text-center">
+	    <img src="RotationNet.jpg" height="300px" class="img-responsive">
+	  </p>
+	</div>
+      </div>
+
+
+
+<h3>Abstract</h3>
+<div class="row">
+    <div class="col-md-12">
+      <p>
+	We propose a Convolutional Neural Network (CNN)-based model "RotationNet," which takes multi-view images of an object as input and jointly estimates its pose and object category. Unlike previous approaches that use known viewpoint labels for training, our method treats the viewpoint labels as latent variables, which are learned in an unsupervised manner during the training using an unaligned object dataset. RotationNet is designed to use only a partial set of multi-view images for inference, and this property makes it useful in practical scenarios where only partial views are available. 
+	Moreover, our pose alignment strategy enables one to obtain view-specific feature representations shared across classes, which is important to maintain high accuracy in both object categorization and pose estimation.
+	Effectiveness of RotationNet is demonstrated by its superior performance to the state-of-the-art methods of 3D object classification on 10- and 40-class ModelNet datasets. 
+	We also show that RotationNet, even trained without known poses, achieves the state-of-the-art performance on an object pose estimation dataset.
+      </p>
+    </div>
+</div>
+
+
+<h3>Publication</h3>
+<div class="row">
+    <div class="col-md-12">
+      <ul>
+	<LI><U>Asako Kanezaki</U>, Yasuyuki Matsushita, and Yoshifumi Nishida.
+	  <BR>RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints.
+	  <BR><I>IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</I>, accepted, 2018.
+	  <BR><a href="https://arxiv.org/abs/1603.06208">PDF</a>
+	</LI>
+      </ul>
+    </div>
+</div>
+
+<h3>Code</h3>
+<div class="row">
+  <div class="col-md-12">
+    <ul>
+      <li>
+	<a href="https://github.com/kanezaki/rotationnet">rotationnet</a> : caffe codes used for CVPR submission
+      </li>
+      <li>
+	<a href="https://github.com/kanezaki/pytorch-rotationnet">pytorch-rotationnet</a> : a pytorch implementation
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h3>Dataset</h3>
+<div class="row">
+  <div class="col-md-12">
+    <ul>
+      <li>
+	<a href="https://github.com/kanezaki/MIRO">Multi-view Images of Rotated Objects (MIRO)</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<h3>BibTeX</h3>
+<div class="row">
+    <div class="col-md-12">
+      <pre>@inproceedings{kanezaki2018_rotationnet,
+	title={RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints},
+	author={Asako Kanezaki and Yasuyuki Matsushita and Yoshifumi Nishida},
+	booktitle={Proceedings of IEEE International Conference on Computer Vision and Pattern Recognition (CVPR)},
+	year={2018},}
+</pre>
+    </div>
+</div>
+
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
