@@ -1,3 +1,0 @@
-images_case2/car_000000079_019.png 18
-images_case2/car_000000079_020.png 19
-images_case2/car_000000079_001.png 0
