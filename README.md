@@ -1,8 +1,6 @@
 # RotationNet
 
 RotationNet takes multi-view images of an object as input and jointly estimates its pose and object category.  
-We got **the first prize** at Task 1 in [the SHREC2017 Large-scale 3D Shape Retrieval from ShapeNet Core55 Challenge](https://shapenet.cs.stanford.edu/shrec17/#results) and got **the first prize** at [the SHREC2017 RGB-D Object-to-CAD Retrieval Contest](http://people.sutd.edu.sg/~saikit/projects/sceneNN/shrec17/evaluation/)!  
-Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_track3) to reproduce our results on SHREC2017 track3.  
 
 ![RotationNet](https://staff.aist.go.jp/kanezaki.asako/images/RotationNet2.jpg "Inference Process")
 
@@ -11,6 +9,14 @@ Asako Kanezaki, Yasuyuki Matsushita and Yoshifumi Nishida.
 *CVPR*, pp.5010-5019, 2018.
 ([pdf](https://arxiv.org/abs/1603.06208))
 ([project](https://kanezaki.github.io/rotationnet/))
+
+## News
+
+[2018.08.10] We uploaded the scripts and pre-trained models that <span style="color:red">reproduce our BEST results on ModelNet10 and ModelNet40.</span>
+
+[2017.02] We got **the first prize** at [the SHREC2017 RGB-D Object-to-CAD Retrieval Contest](http://people.sutd.edu.sg/~saikit/projects/sceneNN/shrec17/evaluation/)!  
+[2017.02] We got **the first prize** at Task 1 in [the SHREC2017 Large-scale 3D Shape Retrieval from ShapeNet Core55 Challenge](https://shapenet.cs.stanford.edu/shrec17/#results)!  
+Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_track3) to reproduce our results on SHREC2017 track3.  
 
 
 ## Requirement
@@ -28,8 +34,15 @@ Prepare your Makefile.config and compile.
     $ cd rotationnet
 
 ### 3. Download pre-trained models
-    $ wget https://staff.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet40_case1.caffemodel  
-    $ wget https://staff.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet40_case2.caffemodel
+Models trained on ModelNet10 and ModelNet40 (full set)  
+
+    $ wget https://data.airc.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet10_case2_ori2.caffemodel  
+    $ wget https://data.airc.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet40_case2_ori4.caffemodel  
+
+Models trained on ModelNet40 (subset)  
+
+    $ wget https://data.airc.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet40_case1.caffemodel  
+    $ wget https://data.airc.aist.go.jp/kanezaki.asako/pretrained_models/rotationnet_modelnet40_case2.caffemodel
 
 ## Getting started
    Change 'caffe\_root' in save_scores.py to your path to caffe-rotationnet2 repository.  
@@ -40,7 +53,16 @@ Prepare your Makefile.config and compile.
    This predicts the category of testing images. Please see below and run "demo2.sh" for testing pose estimation.  
 
 
-## Reproduce results on ModelNet40
+## Reproduce <span style="color:red">our best</span> results on ModelNet10 and ModelNet40 (full set)
+
+### 1. Download multi-view images 
+    $ bash get_full_modelnet_png.sh  
+   
+### 2. Save scores and do predictions
+    $ bash test_full_modelnet10.sh  
+    $ bash test_full_modelnet40.sh  
+
+## Reproduce results on ModelNet40 (subset)
 
 ### 1. Download multi-view images generated in [Su et al. 2015]
     $ bash get_modelnet_png.sh  
@@ -91,3 +113,6 @@ Prepare your Makefile.config and compile.
    Please see [SHREC2017\_track3 repository](https://github.com/kanezaki/SHREC2017_track3)
 
 
+## License
+
+BSD

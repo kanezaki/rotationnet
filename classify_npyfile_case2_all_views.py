@@ -1,10 +1,15 @@
 import numpy, sys
 
-f = open('classes.txt')
+fname = 'classes.txt'
+if len(sys.argv) > 3:
+    fname = sys.argv[3]
+f = open(fname)
 classes = f.readlines()
 classes = [f[:-1] for f in classes]
 clsnum = len(classes)
-clsid = classes.index(sys.argv[2])
+clsid = -1
+if len(sys.argv) > 2:
+    clsid = classes.index(sys.argv[2])
 
 scores = numpy.load(sys.argv[1])
 numR = scores.shape[1]/ (clsnum+1)
@@ -89,4 +94,7 @@ for n in range(nsamp):
     if clsid == numpy.argmax( s ) % clsnum:
         acc = acc + 1
 
-print "Classification Accuracy ("+sys.argv[2]+"): ", acc / float( nsamp )
+if clsid == -1:
+    print classes[ numpy.argmax( s ) % clsnum ]
+else:
+    print "Classification Accuracy ("+sys.argv[2]+"): ", acc / float( nsamp ), "("+str(acc)+"/"+str(nsamp)+")"
