@@ -94,7 +94,10 @@ def main(argv):
     if args.mean_file:
         mean = np.load(args.mean_file)
         # Resize mean (which requires H x W x K input in range [0,1]).
-        in_shape = image_dims
+        if args.mean_file == os.path.join(pycaffe_dir,'caffe/imagenet/ilsvrc_2012_mean.npy'):
+            in_shape = (227,227)
+        else:
+            in_shape = image_dims
         m_min, m_max = mean.min(), mean.max()
         normal_mean = (mean - m_min) / (m_max - m_min)
         mean = caffe.io.resize_image(normal_mean.transpose((1,2,0)),
