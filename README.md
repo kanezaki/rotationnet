@@ -2,7 +2,7 @@
 
 RotationNet takes multi-view images of an object as input and jointly estimates its pose and object category.  
 
-![RotationNet](https://staff.aist.go.jp/kanezaki.asako/images/RotationNet2.jpg "Inference Process")
+![RotationNet](https://kanezaki.github.io/media/RotationNet2.jpg "Inference Process")
 
 Asako Kanezaki, Yasuyuki Matsushita and Yoshifumi Nishida.
 **RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints.** 
